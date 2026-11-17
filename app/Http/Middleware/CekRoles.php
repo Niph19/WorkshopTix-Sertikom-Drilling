@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class CekRoles
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  Closure(Request): (Response)  $next
+     */
+    public function handle(Request $request, Closure $next, string $role): Response
+    {
+        if (!$request->user() || !$request->user()->roles !== $role) {
+            return redirect('welcome')->with(403, 'Akses ditolak, role anda tidak sesuai.');
+        }
+
+        return $next($request);
+    }
+}
