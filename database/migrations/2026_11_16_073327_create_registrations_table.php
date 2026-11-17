@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+            $table->string('order_id')->unique();
+            $table->string('kode_tiket')->unique();
+            $table->unsignedInteger('jumlah');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('workshop_id')->constrained()->onDelete('cascade');
+            $table->enum('status', ['menunggu', 'lunas', 'dibatalkan'])->default('menunggu');
             $table->timestamps();
         });
     }
