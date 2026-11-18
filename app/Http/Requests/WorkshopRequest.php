@@ -26,7 +26,7 @@ class WorkshopRequest extends FormRequest
             'judul' => ['required', 'string', 'min:10', 'max:255'],
             'deskripsi' => ['required', 'string', 'max:255'],
             'jadwal' => ['required', 'date'],
-            'harga' => ['required', 'decimal:4,7'],
+            'harga' => ['required', 'numeric', 'min:0', 'max:99999999.99'],
             'kuota' => ['required', 'integer', 'min:5', 'max:255'],
         ];
     }

@@ -15,8 +15,8 @@ class CekRoles
      */
     public function handle(Request $request, Closure $next, string $role): Response
     {
-        if (!$request->user() || !$request->user()->roles !== $role) {
-            return redirect('welcome')->with(403, 'Akses ditolak, role anda tidak sesuai.');
+        if (! $request->user() || $request->user()->roles !== $role) {
+            abort(403, 'Akses ditolak, role anda tidak sesuai.');
         }
 
         return $next($request);

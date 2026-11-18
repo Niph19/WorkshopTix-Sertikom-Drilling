@@ -10,6 +10,14 @@
                     </a>
                 </div> --}}
 
+                @if (auth()->user()?->roles === 'panitia')
+                    <div class="hidden sm:flex sm:items-center sm:ms-8">
+                        <a href="{{ route('admin.workshops.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('admin.workshops.*') ? 'border-blue-600 text-slate-900' : 'border-transparent text-slate-600 hover:text-slate-900 hover:border-slate-300' }} text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+                            Kelola workshop
+                        </a>
+                    </div>
+                @endif
+
                 <!-- Navigation Links -->
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -71,6 +79,14 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div> --}}
+
+        @if (auth()->user()?->roles === 'panitia')
+            <div class="border-t border-slate-200 px-4 py-2">
+                <x-responsive-nav-link :href="route('admin.workshops.index')" :active="request()->routeIs('admin.workshops.*')">
+                    Kelola workshop
+                </x-responsive-nav-link>
+            </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

@@ -11,11 +11,16 @@ class Workshop extends Model
         'deskripsi',
         'jadwal',
         'harga',
-        'kuota'
+        'kuota',
     ];
 
-    public function registration()
+    public function registrations()
     {
         return $this->hasMany(Registration::class);
+    }
+
+    protected function casts(): array
+    {
+        return ['jadwal' => 'datetime'];
     }
 }
