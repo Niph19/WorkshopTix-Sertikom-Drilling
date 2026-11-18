@@ -9,6 +9,7 @@ class Registration extends Model
     protected $fillable = [
         'order_id',
         'kode_tiket',
+        'jumlah',
         'user_id',
         'workshop_id',
         'status'
